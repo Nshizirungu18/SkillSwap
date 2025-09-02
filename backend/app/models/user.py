@@ -1,10 +1,15 @@
 from app.extensions import db
+from datetime import datetime
 
 class User(db.Model):
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100), unique=True)
-    password_hash = db.Column(db.Text)
-    role = db.Column(db.String(20))  # 'learner' or 'instructor'
-    plan = db.Column(db.String(20))  # 'free', 'premium', 'ai'
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.String(20), default="learner")  # learner, instructor, admin
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<User {self.username}>"
