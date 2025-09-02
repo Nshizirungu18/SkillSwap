@@ -1,23 +1,22 @@
 from flask import Flask
-from app.extensions import db, migrate, jwt
-from app.routes.auth import auth_bp
-from app.routes.courses import courses_bp
-from app.routes.match import match_bp
-from app.routes.contact import contact_bp
-from app.routes.plans import plans_bp
+from .config import Config
+from .extensions import db, migrate, jwt
+from .routes import auth_routes, user_routes, course_routes, match_routes, payment_routes
 
-def create_app():
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object('app.config.Config')
+    app.config.from_object(config_class)
 
+    # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
 
-    app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(courses_bp, url_prefix='/courses')
-    app.register_blueprint(match_bp, url_prefix='/match')
-    app.register_blueprint(contact_bp, url_prefix='/contact')
-    app.register_blueprint(plans_bp, url_prefix='/plans')
+    # Register blueprints
+    app.register_blueprint(auth_routes.bp, url_prefix="/api/auth")
+    app.register_blueprint(user_routes.bp, url_prefix="/api/users")
+    app.register_blueprint(course_routes.bp, url_prefix="/api/courses")
+    app.register_blueprint(match_routes.bp, url_prefix="/api/match")
+    app.register_blueprint(payment_routes.bp, url_prefix="/api/payments")
 
     return app
