@@ -1,22 +1,28 @@
 from flask import Flask
-from .config import Config
-from .extensions import db, migrate, jwt
-from .routes import auth_routes, user_routes, course_routes, match_routes, payment_routes
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+import os
 
-def create_app(config_class=Config):
+db = SQLAlchemy()
+migrate = Migrate()
+jwt = JWTManager()
+
+def create_app():
     app = Flask(__name__)
-    app.config.from_object(config_class)
+
+    # Load configuration
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@localhost/skillswap_db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # Change this later
 
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
 
-    # Register blueprints
-    app.register_blueprint(auth_routes.bp, url_prefix="/api/auth")
-    app.register_blueprint(user_routes.bp, url_prefix="/api/users")
-    app.register_blueprint(course_routes.bp, url_prefix="/api/courses")
-    app.register_blueprint(match_routes.bp, url_prefix="/api/match")
-    app.register_blueprint(payment_routes.bp, url_prefix="/api/payments")
+    # Register routes (empty for now)
+    from app.routes import main
+    app.register_blueprint(main)
 
     return app
