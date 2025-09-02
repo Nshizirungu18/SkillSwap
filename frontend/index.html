@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo">SkillSwap</h1>
+      <nav>
+        <ul class="nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#match">Find a Match</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <button class="btn btn-secondary" id="openLogin">Login</button>
+        <button class="btn btn-primary" id="openSignup">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main id="main">
+    <section id="home" class="hero section-bg">
+      <div class="container">
+        <h2>Welcome to SkillSwap</h2>
+        <p>Learn, teach, and connect with peers worldwide in a trusted academic exchange.</p>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <div class="container">
+        <h2>Available Courses</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Front-end Development</h3>
+            <p>Explore HTML, CSS, and JavaScript fundamentals.</p>
+          </article>
+          <article class="card">
+            <h3>Back-end Development</h3>
+            <p>Dive into Database and python</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<!-- ================= Skills Match Section ================= -->
+<section class="skill-match">
+  <h2>🔍 Find Your Match</h2>
+  <p>Connect with peers who want to learn or teach the same subject.</p>
+
+  <!-- Role Selection -->
+  <div class="form-group">
+    <label>I want to:</label>
+    <div class="role-options">
+      <label><input type="radio" name="role" value="teach"> Teach</label>
+      <label><input type="radio" name="role" value="learn"> Learn</label>
+    </div>
+  </div>
+
+  <!-- Lesson Subject -->
+  <div class="form-group">
+    <label for="lesson">Lesson / Subject</label>
+    <input type="text" id="lesson" placeholder="e.g. Business Strategy, Python Programming">
+  </div>
+
+  <!-- Skill Level -->
+  <div class="form-group">
+    <label for="skill-level">Your Skill Level</label>
+    <select id="skill-level">
+      <option>Beginner</option>
+      <option>Intermediate</option>
+      <option>Advanced</option>
+    </select>
+  </div>
+
+  <!-- Availability -->
+  <div class="form-group">
+    <label for="availability">Your Availability</label>
+    <input type="datetime-local" id="availability">
+  </div>
+
+  <!-- Submit -->
+  <button class="btn-primary">Find My Match</button>
+
+  <!-- Mock Result -->
+  <div class="match-result">
+    <h3>🎉 Match Found!</h3>
+    <p><strong>Instructor:</strong> Sarah K. (Computer Science)</p>
+    <p><strong>Student:</strong> John M. (Beginner Python)</p>
+    <p><strong>Proposed Time:</strong> Tue, Sept 3 at 4:00 PM</p>
+    <p class="note">💡 Don’t agree? The system will suggest another time.</p>
+  </div>
+</section>
+<section class="pricing-section">
+  <h1 class="section-title">Choose Your Plan</h1>
+  <p class="section-subtitle">Flexible plans to teach, learn, and grow with SkillSwap.</p>
+
+  <div class="pricing-cards">
+
+    <!-- Free Plan -->
+    <div class="card">
+      <h2 class="plan-title">Free</h2>
+      <p class="plan-tagline">Start your journey</p>
+      <p class="plan-price">Free</p>
+      <ul class="features">
+        <li>✔ Basic peer matching</li>
+        <li>✔ Public instructor profiles</li>
+        <li>✔ Public course materials</li>
+        <li>✔ Manual scheduling</li>
+        <li>✔ Basic history tracking</li>
+        <li>✘ Certification</li>
+        <li>✔ Community support</li>
+        <li>⚠ Includes ads</li>
+      </ul>
+      <button class="btn">Get Started</button>
+    </div>
+
+    <!-- Premium Plan -->
+    <div class="card popular">
+      <div class="badge">Most Popular</div>
+      <h2 class="plan-title">Premium</h2>
+      <p class="plan-tagline">Boost your learning</p>
+      <p class="plan-price">$2<span>/month</span></p>
+      <ul class="features">
+        <li>✔ Priority peer matching</li>
+        <li>✔ Verified mentors</li>
+        <li>✔ Exclusive tutorials</li>
+        <li>✔ Smart calendar</li>
+        <li>✔ Dashboard & analytics</li>
+        <li>✔ Skill badges</li>
+        <li>✔ Dedicated support</li>
+        <li>✔ Ad-free experience</li>
+      </ul>
+      <button class="btn">Upgrade</button>
+    </div>
+
+    <!-- AI-Powered Plan -->
+    <div class="card highlight">
+      <div class="badge accent">Best Value</div>
+      <h2 class="plan-title">AI-Powered</h2>
+      <p class="plan-tagline">The future of learning</p>
+      <p class="plan-price">$5<span>/month</span></p>
+      <ul class="features">
+        <li>✔ AI-driven recommendations</li>
+        <li>✔ Smart instructor matching</li>
+        <li>✔ Adaptive learning paths</li>
+        <li>✔ AI-optimized scheduling</li>
+        <li>✔ AI-generated insights</li>
+        <li>✔ AI-evaluated certificates</li>
+        <li>✔ AI assistant guidance</li>
+        <li>✔ Ad-free + priority access</li>
+      </ul>
+      <button class="btn accent">Unlock AI Tools</button>
+    </div>
+
+  </div>
+</section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form class="form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-secondary">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 SkillSwap. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
